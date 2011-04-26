@@ -14,20 +14,4 @@
 *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include <iostream>
-
 #include "libfahclient.h"
-
-FahClient::FahClient(string hostname, int port, string password)
-{
-    interface = new Interface(hostname, port, password);
-}
-
-FahClient::~FahClient(void)
-{
-}
-
-string FahClient::Help(string option)
-{
-    return this->interface->Help(option);
-}

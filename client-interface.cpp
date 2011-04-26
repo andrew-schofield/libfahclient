@@ -16,18 +16,16 @@
 
 #include <iostream>
 
-#include "libfahclient.h"
+#include "client-interface.h"
 
-FahClient::FahClient(string hostname, int port, string password)
+int main()
 {
-    interface = new Interface(hostname, port, password);
+  string hostname = "127.0.0.1";
+  string password = "";
+  int port = 36330;
+  
+  FahClient *myfahclient = new FahClient(hostname, port, password);
+  cout << myfahclient->Help("uptime");
+    
 }
 
-FahClient::~FahClient(void)
-{
-}
-
-string FahClient::Help(string option)
-{
-    return this->interface->Help(option);
-}
