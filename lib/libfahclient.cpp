@@ -25,6 +25,7 @@ FahClient::FahClient(string hostname, int port, string password)
 
 FahClient::~FahClient(void)
 {
+    delete interface;
 }
 
 string FahClient::Help(string option)

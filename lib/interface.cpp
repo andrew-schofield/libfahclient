@@ -23,6 +23,7 @@ Interface::Interface(string hostname, int port, string password)
 
 Interface::~Interface()
 {
+    delete connection;
 }
 
 string Interface::Help(string option)

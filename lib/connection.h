@@ -17,6 +17,7 @@ private:
     int socket_descriptor;
 public:
     Connection(string hostname, int port, string password);
+    
     ~Connection();
 
     bool Socket_Connect(const char *hostname, int port, const char *password);

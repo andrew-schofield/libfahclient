@@ -20,12 +20,12 @@
 
 int main()
 {
-  string hostname = "127.0.0.1";
-  string password = "";
-  int port = 36330;
-  
-  FahClient *myfahclient = new FahClient(hostname, port, password);
-  cout << myfahclient->Help("uptime");
-    
+    string hostname = "127.0.0.1";
+    string password = "";
+    int port = 36330;
+
+    FahClient *myfahclient = new FahClient(hostname, port, password);
+    cout << myfahclient->Help("uptime");
+    delete myfahclient;      
 }
 
