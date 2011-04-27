@@ -1,5 +1,5 @@
 /*
- * File PYONValue.h part of the SimplePYON Library - http://mjpa.in/PYON
+ * File JSON.cpp part of the SimpleJSON Library - http://mjpa.in/JSON
  * 
  * Copyright (C) 2010 Mike Anchor
  * 
@@ -19,7 +19,7 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * THE SOFTWARE. 
  */
 
 #ifndef _PYONVALUE_H_
