@@ -19,55 +19,63 @@
 
 #include <string>
 
+#include "PYON.h"
+#include "PYONValue.h"
 #include "interface.h"
 
 using namespace std;
 
 class FahClient
 {
-protected:
+private:
     Interface *interface;
 public:
     FahClient(string hostname, int port, string password);
     ~FahClient(void);
 
+//Basic Commands
     string Help(string option = "");
-    string Auth();
-    string Error();
-    string Heartbeat();
-    string Exit();
-    string Quit();
+    bool Auth(string option = "");
+    string Error(string message = "");
+    void Exit();
+    int Heartbeat();
+    void Quit();
+    string Updates(string options);
+//Folding@home client commands
+    string Bond(string options);
+    string DoCycle();
+    string DownloadCore(string options);
+    string Finish(string slot);
     string GetInfo();
-    string Info();
+    void Info();
+    string MaskUnitState();
     string Option();
-    string GetOption();
-    string SetOption();
     string Options();
-    string DefaultOptions();
-    string AllOptions();
-    string GetOptions();
-    string SetOptions();
-    string ResetOptions();
+    string Pause(string slot);
+    string Protein(string options);
     string QueueInfo();
-    string SimulationInfo();
-    string SlotAdd();
-    string SlotDelete();
+    string RequestId();
+    string RequestWs();
+    string Save(string file);
+    string Shutdown();
+    string SimulationInfo(string slot);
+    string SlotAdd(string options);
+    string SlotDelete(string slot);
     string SlotInfo();
-    string SlotModify();
-    string SlotOptions();
-    string DefaultSlotOptions();
-    string AllSlotOptions();
+    string SlotModify(string options);
+    string SlotOptions(string options);
     string Uptime();
-    string Add();
+    string WaitForUnits();
+    string Add(double num1, double num2);
     string Clear();
-    string Date();
-    string Div ();
-    string Eval();
-    string If();
-    string Mul();
-    string Not();
-    string Sleep();
-    string Sub();
+    string Date(string format);
+    string Div (double num1, double num2);
+    string Eval(string expr);
+    string If(string options);
+    string Mul(double num1, double num2);
+    string Not(string expr);
+    string Sleep(int seconds);
+    string Sub(double num1, double num2);
 };
 
 #endif /* _LIBFAHCLIENT_H */

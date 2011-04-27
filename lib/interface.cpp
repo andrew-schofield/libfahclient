@@ -26,6 +26,13 @@ Interface::~Interface()
     delete connection;
 }
 
+string Interface::Preparse(string pyon)
+{
+    pyon.replace(pyon.find("PyON"), pyon.find("\n")+1, "");
+    pyon.replace(pyon.find("\n---\n>"), 6, "");
+    return pyon;
+}
+
 string Interface::Help(string option)
 {
     string str;
@@ -34,4 +41,42 @@ string Interface::Help(string option)
     str.append("\n");
     return this->connection->Command(str);
     
+}
+
+string Interface::Auth(string password)
+{
+    string str;
+    str.append("auth ");
+    str.append(password);
+    str.append("\n");
+    return this->connection->Command(str);
+}
+
+PYONValue* Interface::Error(string message)
+{
+    string str;
+    str.append("error ");
+    str.append(message);
+    str.append("\n");
+    return PYON::Parse(Preparse(this->connection->Command(str)).c_str());
+}
+
+void Interface::Exit()
+{
+    this->connection->Command("exit");
+}
+
+PYONValue* Interface::Heartbeat()
+{
+    return PYON::Parse(Preparse(this->connection->Command("heartbeat\n")).c_str());
+}
+
+void Interface::Quit()
+{
+    this->connection->Command("quit");
+}
+
+PYONValue* Interface::Info()
+{
+    return PYON::Parse(Preparse(this->connection->Command("info\n")).c_str());
 }

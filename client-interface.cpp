@@ -25,7 +25,7 @@ int main()
     int port = 36330;
 
     FahClient *myfahclient = new FahClient(hostname, port, password);
-    cout << myfahclient->Help("uptime");
+    myfahclient->Info();
     delete myfahclient;      
 }
 

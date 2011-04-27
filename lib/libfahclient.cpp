@@ -32,3 +32,36 @@ string FahClient::Help(string option)
 {
     return this->interface->Help(option);
 }
+
+bool FahClient::Auth(string password)
+{
+    //return this->interface->Auth(password);
+}
+
+string FahClient::Error(string message)
+{
+    //return this->interface->Error(message);
+}
+
+void FahClient::Exit()
+{
+    this->interface->Exit();
+}
+
+int FahClient::Heartbeat()
+{
+    PYONValue* value = this->interface->Heartbeat();
+    return int(value->AsNumber());
+}
+
+void FahClient::Quit()
+{
+    this->interface->Quit();
+}
+
+void FahClient::Info()
+{
+    PYONValue* value = this->interface->Info();
+}
+
+
