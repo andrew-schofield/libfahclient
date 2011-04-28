@@ -55,9 +55,9 @@ string Interface::Auth(string password)
 PYONValue* Interface::Error(string message)
 {
     string str;
-    str.append("error ");
+    str.append("error \"");
     str.append(message);
-    str.append("\n");
+    str.append("\"\n");
     return PYON::Parse(Preparse(this->connection->Command(str)).c_str());
 }
 

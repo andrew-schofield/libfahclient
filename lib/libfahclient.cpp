@@ -18,6 +18,14 @@
 
 #include "libfahclient.h"
 
+string WideToNarrow(wstring wide)
+{
+    //gah, not unicode safe!!
+    string str;
+    str.assign(wide.begin(), wide.end());
+    return str;
+}
+
 FahClient::FahClient(string hostname, int port)
 {
     interface = new Interface(hostname, port);
@@ -46,7 +54,8 @@ bool FahClient::Auth(string password)
 
 string FahClient::Error(string message)
 {
-    //return this->interface->Error(message);
+    PYONValue* value = this->interface->Error(message);
+    return WideToNarrow(wstring(value->AsString()));
 }
 
 void FahClient::Exit()

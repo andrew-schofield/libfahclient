@@ -30,7 +30,7 @@ int main()
         delete myfahclient;
         return 0;
     }
-    cout << myfahclient->Help();
+    cout << myfahclient->Error("This cannot be unicode :(") << endl;
     delete myfahclient;      
 }
 
