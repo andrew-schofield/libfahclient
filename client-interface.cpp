@@ -21,11 +21,16 @@
 int main()
 {
     string hostname = "127.0.0.1";
-    string password = "";
+    string password = "1";
     int port = 36330;
 
-    FahClient *myfahclient = new FahClient(hostname, port, password);
-    myfahclient->Info();
+    FahClient *myfahclient = new FahClient(hostname, port);
+    if (!myfahclient->Auth(password))
+    {
+        delete myfahclient;
+        return 0;
+    }
+    cout << myfahclient->Help();
     delete myfahclient;      
 }
 

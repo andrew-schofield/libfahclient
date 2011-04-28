@@ -18,9 +18,9 @@
 
 #include "libfahclient.h"
 
-FahClient::FahClient(string hostname, int port, string password)
+FahClient::FahClient(string hostname, int port)
 {
-    interface = new Interface(hostname, port, password);
+    interface = new Interface(hostname, port);
 }
 
 FahClient::~FahClient(void)
@@ -35,7 +35,13 @@ string FahClient::Help(string option)
 
 bool FahClient::Auth(string password)
 {
-    //return this->interface->Auth(password);
+    string str;
+    str = this->interface->Auth(password);
+    if(str.find("OK") != string::npos)
+        return true;
+    if(str.find("FAILED") != string::npos)
+        return false;
+    return false;
 }
 
 string FahClient::Error(string message)

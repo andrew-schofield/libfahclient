@@ -31,7 +31,7 @@ private:
 protected:
     Connection *connection;
 public:
-    Interface(string hostname, int port, string password);
+    Interface(string hostname, int port);
     ~Interface(void);
 //Basic Commands
     string Help(string option);

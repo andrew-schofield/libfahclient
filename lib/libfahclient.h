@@ -30,7 +30,7 @@ class FahClient
 private:
     Interface *interface;
 public:
-    FahClient(string hostname, int port, string password);
+    FahClient(string hostname, int port);
     ~FahClient(void);
 
 //Basic Commands

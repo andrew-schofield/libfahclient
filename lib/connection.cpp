@@ -25,9 +25,9 @@
 
 #include "connection.h"
 
-Connection::Connection(string hostname, int port, string password)
+Connection::Connection(string hostname, int port)
 {
-    Socket_Connect(hostname.c_str(), port, password.c_str());
+    Socket_Connect(hostname.c_str(), port);
 
     this->Socket_Recv();
 }
@@ -36,7 +36,7 @@ Connection::~Connection()
 {
 }
 
-bool Connection::Socket_Connect(const char *hostname, int port, const char *password)
+bool Connection::Socket_Connect(const char *hostname, int port)
 {
 
 	struct sockaddr_in sin;

@@ -16,9 +16,9 @@
 
 #include "interface.h"
 
-Interface::Interface(string hostname, int port, string password)
+Interface::Interface(string hostname, int port)
 {
-    connection = new Connection(hostname, port, password);
+    connection = new Connection(hostname, port);
 }
 
 Interface::~Interface()
