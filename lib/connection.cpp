@@ -22,6 +22,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <iostream>
 
 #include "connection.h"
 

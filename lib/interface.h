@@ -17,17 +17,36 @@
 #ifndef _INTERFACE_H
 #define _INTERFACE_H
 
+#include <iostream>
+#include <sstream>
 #include <string>
+#include <typeinfo>
+#include <stdexcept>
 
 #include "connection.h"
 #include "PYONValue.h"
 
 using namespace std;
 
+class BadConversion : public std::runtime_error
+{
+public:
+    BadConversion(std::string const& s)
+    : std::runtime_error(s)
+    { }
+};
+
 class Interface
 {
 private:
     string Preparse(string pyon);
+    std::string stringify(double x)
+    {
+        std::ostringstream o;
+        if (!(o << x))
+            throw BadConversion("stringify(double)");
+        return o.str();
+    }
 protected:
     Connection *connection;
 public:
@@ -40,41 +59,41 @@ public:
     void Exit();
     PYONValue* Heartbeat();
     void Quit();
-    string Updates(string options);
+    //string Updates(string options);
 //Folding@home client commands
-    string Bond(string options);
-    string DoCycle();
-    string DownloadCore(string options);
-    string Finish(string slot);
-    string GetInfo();
+    //string Bond(string options);
+    //string DoCycle();
+    //string DownloadCore(string options);
+    //string Finish(string slot);
+    //string GetInfo();
     PYONValue* Info();
-    string MaskUnitState();
-    string Option();
-    string Options();
-    string Pause(string slot);
-    string Protein(string options);
-    string QueueInfo();
-    string RequestId();
-    string RequestWs();
-    string Save(string file);
-    string Shutdown();
-    string SimulationInfo(string slot);
-    string SlotAdd(string options);
-    string SlotDelete(string slot);
-    string SlotInfo();
-    string SlotModify(string options);
-    string SlotOptions(string options);
-    string Uptime();
-    string WaitForUnits();
+    //string MaskUnitState();
+    //string Option();
+    //string Options();
+    //string Pause(string slot);
+    //string Protein(string options);
+    //string QueueInfo();
+    //string RequestId();
+    //string RequestWs();
+    //string Save(string file);
+    //string Shutdown();
+    //string SimulationInfo(string slot);
+    //string SlotAdd(string options);
+    //string SlotDelete(string slot);
+    //string SlotInfo();
+    //string SlotModify(string options);
+    //string SlotOptions(string options);
+    //string Uptime();
+    //string WaitForUnits();
     string Add(double num1, double num2);
-    string Clear();
-    string Date(string format);
+    //string Clear();
+    //string Date(string format);
     string Div (double num1, double num2);
-    string Eval(string expr);
-    string If(string options);
+    //string Eval(string expr);
+    //string If(string options);
     string Mul(double num1, double num2);
-    string Not(string expr);
-    string Sleep(int seconds);
+    //string Not(string expr);
+    //void Sleep(int seconds);
     string Sub(double num1, double num2);
 };
 

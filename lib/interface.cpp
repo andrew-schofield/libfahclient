@@ -80,3 +80,48 @@ PYONValue* Interface::Info()
 {
     return PYON::Parse(Preparse(this->connection->Command("info\n")).c_str());
 }
+
+string Interface::Add(double num1, double num2)
+{
+    string str;
+    str.append("add ");
+    str.append(stringify(num1));
+    str.append(" ");
+    str.append(stringify(num2));
+    str.append("\n");
+    return this->connection->Command(str);
+}
+
+string Interface::Div(double num1, double num2)
+{
+    string str;
+    str.append("div ");
+    str.append(stringify(num1));
+    str.append(" ");
+    str.append(stringify(num2));
+    str.append("\n");
+    return this->connection->Command(str);
+}
+
+string Interface::Mul(double num1, double num2)
+{
+    string str;
+    str.append("mul ");
+    str.append(stringify(num1));
+    str.append(" ");
+    str.append(stringify(num2));
+    str.append("\n");
+    return this->connection->Command(str);
+}
+
+string Interface::Sub(double num1, double num2)
+{
+    string str;
+    str.append("sub ");
+    str.append(stringify(num1));
+    str.append(" ");
+    str.append(stringify(num2));
+    str.append("\n");
+    return this->connection->Command(str);
+}
+

@@ -79,4 +79,23 @@ void FahClient::Info()
     PYONValue* value = this->interface->Info();
 }
 
+double FahClient::Add(double num1, double num2)
+{
+    return strtod(this->interface->Add(num1, num2).c_str(), NULL);
+}
+
+double FahClient::Div(double num1, double num2)
+{
+    return strtod(this->interface->Div(num1, num2).c_str(), NULL);
+}
+
+double FahClient::Mul(double num1, double num2)
+{
+    return strtod(this->interface->Mul(num1, num2).c_str(), NULL);
+}
+
+double FahClient::Sub(double num1, double num2)
+{
+    return strtod(this->interface->Sub(num1, num2).c_str(), NULL);
+}
 
