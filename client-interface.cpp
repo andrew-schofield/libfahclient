@@ -30,7 +30,10 @@ int main()
         delete myfahclient;
         return 0;
     }
-    cout << myfahclient->Sub(1.1, 1.1) << endl;
+    
+    struct info clientinfo;
+    clientinfo = myfahclient->Info();
+    cout << clientinfo.client.Website << endl;
     delete myfahclient;      
 }
 

@@ -25,11 +25,52 @@
 
 using namespace std;
 
+struct info {
+    struct Client {
+        string Website;
+        string Copyright;
+        string Author;
+        string Args;
+        string Config;        
+    } client;
+    struct Build {
+        string Version;
+        time_t Date;
+        time_t Time;
+        int SVNRev;
+        string Branch;
+        string Compiler;
+        string Options;
+        string Platform;
+        int Bits;
+        string Mode;        
+    } build;
+    struct System {
+        string OS;
+        string CPU;
+        string CPUID;
+        string CPUs;
+        string Memory;
+        string FreeMemory;
+        string Threads;
+        int GPUs;
+        /*array of GPUs should be here*/
+        double CUDA;
+        double CUDADriver;
+        bool OnBattery;
+        double UTCoffset;
+        int PID;
+        string CWD;
+        bool Win32Service;
+    } system;
+};
+
 class FahClient
 {
 private:
     Interface *interface;
 public:
+
     FahClient(string hostname, int port);
     ~FahClient(void);
 
@@ -47,7 +88,7 @@ public:
     //string DownloadCore(string options);
     //string Finish(string slot);
     //string GetInfo();
-    void Info();
+    struct info Info();
     //string MaskUnitState();
     //string Option();
     //string Options();
