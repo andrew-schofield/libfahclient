@@ -92,7 +92,7 @@ public:
     //string Eval(string expr);
     //string If(string options);
     string Mul(double num1, double num2);
-    //string Not(string expr);
+    string Not(string expr);
     //void Sleep(int seconds);
     string Sub(double num1, double num2);
 };

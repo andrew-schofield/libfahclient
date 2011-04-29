@@ -114,6 +114,15 @@ string Interface::Mul(double num1, double num2)
     return this->connection->Command(str);
 }
 
+string Interface::Not(string expr)
+{
+    string str;
+    str.append("not ");
+    str.append(expr);
+    str.append("\n");
+    return this->connection->Command(str);
+}
+
 string Interface::Sub(double num1, double num2)
 {
     string str;

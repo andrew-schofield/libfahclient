@@ -26,6 +26,15 @@ string WideToNarrow(wstring wide)
     return str;
 }
 
+bool to_bool(std::string str)
+{
+    std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+    std::istringstream is(str);
+    bool b;
+    is >> std::boolalpha >> b;
+    return b;
+}
+
 FahClient::FahClient(string hostname, int port)
 {
     interface = new Interface(hostname, port);
@@ -164,6 +173,11 @@ double FahClient::Div(double num1, double num2)
 double FahClient::Mul(double num1, double num2)
 {
     return strtod(this->interface->Mul(num1, num2).c_str(), NULL);
+}
+
+bool FahClient::Not(string expr)
+{
+    return to_bool(this->interface->Not(expr));
 }
 
 double FahClient::Sub(double num1, double num2)

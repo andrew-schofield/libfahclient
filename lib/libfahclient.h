@@ -18,6 +18,8 @@
 #define _LIBFAHCLIENT_H
 
 #include <string>
+#include <sstream>
+#include <algorithm>
 
 #include "PYON.h"
 #include "PYONValue.h"
@@ -114,7 +116,7 @@ public:
     //string Eval(string expr);
     //string If(string options);
     double Mul(double num1, double num2);
-    //string Not(string expr);
+    bool Not(string expr);
     //string Sleep(int seconds);
     double Sub(double num1, double num2);
 };

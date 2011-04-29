@@ -31,9 +31,6 @@ int main()
         return 0;
     }
     
-    struct info clientinfo;
-    clientinfo = myfahclient->Info();
-    cout << clientinfo.client.Website << endl;
     delete myfahclient;      
 }
 
