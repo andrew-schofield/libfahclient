@@ -83,6 +83,12 @@ void FahClient::Quit()
     this->interface->Quit();
 }
 
+double FahClient::PPD()
+{
+    PYONValue* value = this->interface->PPD();
+    return double(value->AsNumber());
+}
+
 struct info FahClient::Info()
 {
     PYONValue* value = this->interface->Info();

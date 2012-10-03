@@ -36,10 +36,13 @@ string Interface::Preparse(string pyon)
 string Interface::Help(string option)
 {
     string str;
+    string ret;
     str.append("help ");
     str.append(option);
     str.append("\n");
-    return this->connection->Command(str);
+    ret = this->connection->Command(str);
+    ret.replace(ret.find("\n>"),3, "\n");
+    return ret;
     
 }
 
@@ -79,6 +82,11 @@ void Interface::Quit()
 PYONValue* Interface::Info()
 {
     return PYON::Parse(Preparse(this->connection->Command("info\n")).c_str());
+}
+
+PYONValue* Interface::PPD()
+{
+	return PYON::Parse(Preparse(this->connection->Command("ppd\n")).c_str());
 }
 
 string Interface::Add(double num1, double num2)

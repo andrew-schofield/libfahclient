@@ -28,9 +28,9 @@
 
 Connection::Connection(string hostname, int port)
 {
-    Socket_Connect(hostname.c_str(), port);
-
-    this->Socket_Recv();
+    if(Socket_Connect(hostname.c_str(), port))
+		this->Socket_Recv();
+	else throw("uh oh");
 }
 
 Connection::~Connection()
@@ -83,7 +83,7 @@ string Connection::Socket_Recv()
     FD_ZERO(&g_ReadSet);
     FD_SET(socket_descriptor, &g_ReadSet);
     tv.tv_sec = 0;
-    tv.tv_usec = 50000;
+    tv.tv_usec = 500000;
     string out = "";
 	static char buffer[RECV_BYTES];
 	int recv_bytes = 0;
@@ -111,9 +111,7 @@ void Connection::Socket_Close()
 string Connection::Command(string cmd)
 {
     string s;
-    
     Socket_Send(cmd.c_str());
-        
-    s = Socket_Recv();
+    s = this->Socket_Recv();
     return s;
 }

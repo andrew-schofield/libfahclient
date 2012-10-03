@@ -82,6 +82,7 @@ public:
     string Error(string message = "");
     void Exit();
     int Heartbeat();
+    //void LogUpdates(string state);
     void Quit();
     //string Updates(string options);
 //Folding@home client commands
@@ -91,10 +92,12 @@ public:
     //string Finish(string slot);
     //string GetInfo();
     struct info Info();
+    //string Inject(string options);
     //string MaskUnitState();
     //string Option();
     //string Options();
     //string Pause(string slot);
+    double PPD();
     //string Protein(string options);
     //string QueueInfo();
     //string RequestId();
@@ -107,6 +110,7 @@ public:
     //string SlotInfo();
     //string SlotModify(string options);
     //string SlotOptions(string options);
+    //string UnPause(string slot);
     //string Uptime();
     //string WaitForUnits();
     double Add(double num1, double num2);

@@ -71,6 +71,7 @@ public:
     //string Option();
     //string Options();
     //string Pause(string slot);
+    PYONValue* PPD();
     //string Protein(string options);
     //string QueueInfo();
     //string RequestId();
