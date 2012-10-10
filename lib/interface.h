@@ -68,9 +68,11 @@ public:
     //string GetInfo();
     PYONValue* Info();
     //string MaskUnitState();
+    PYONValue* NumSlots();
     //string Option();
     //string Options();
-    //string Pause(string slot);
+    void Pause();
+    void Pause(int slot);
     PYONValue* PPD();
     //string Protein(string options);
     //string QueueInfo();
@@ -84,10 +86,11 @@ public:
     //string SlotInfo();
     //string SlotModify(string options);
     //string SlotOptions(string options);
-    //string Uptime();
+    string Uptime();
+    void UnPause();
+    void UnPause(int slot);
     //string WaitForUnits();
     string Add(double num1, double num2);
-    //string Clear();
     //string Date(string format);
     string Div (double num1, double num2);
     //string Eval(string expr);

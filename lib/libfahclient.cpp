@@ -83,10 +83,53 @@ void FahClient::Quit()
     this->interface->Quit();
 }
 
+void FahClient::Pause()
+{
+	this->interface->Pause();
+}
+
+void FahClient::Pause(int slot)
+{
+	this->interface->Pause(slot);
+}
+
 double FahClient::PPD()
 {
     PYONValue* value = this->interface->PPD();
     return double(value->AsNumber());
+}
+
+int FahClient::NumSlots()
+{
+    PYONValue* value = this->interface->NumSlots();
+    return int(value->AsNumber());
+}
+
+void FahClient::UnPause()
+{
+	this->interface->UnPause();
+}
+
+void FahClient::UnPause(int slot)
+{
+	this->interface->UnPause(slot);
+}
+
+struct tm FahClient::Uptime()
+{
+	struct tm uptime;
+	int years = 0, months= 0, days = 0, hours = 0, minutes = 0, seconds = 0;
+	sscanf(this->interface->Uptime().c_str(), "%d %d %d %d", &days, &hours, &minutes, &seconds);
+	uptime.tm_sec = seconds;
+	uptime.tm_min = minutes;
+	uptime.tm_hour = hours;
+	uptime.tm_mday = days;
+	uptime.tm_mon = hours;
+	uptime.tm_year = years;
+	uptime.tm_wday = 0;
+	uptime.tm_yday = 0;
+	uptime.tm_isdst = -1;
+	return uptime;
 }
 
 struct info FahClient::Info()

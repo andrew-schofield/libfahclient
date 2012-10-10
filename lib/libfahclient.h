@@ -20,6 +20,7 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <time.h>
 
 #include "PYON.h"
 #include "PYONValue.h"
@@ -75,6 +76,7 @@ public:
 
     FahClient(string hostname, int port);
     ~FahClient(void);
+    string error;
 
 //Basic Commands
     string Help(string option = "");
@@ -94,9 +96,11 @@ public:
     struct info Info();
     //string Inject(string options);
     //string MaskUnitState();
+    int NumSlots();
     //string Option();
     //string Options();
-    //string Pause(string slot);
+    void Pause();
+    void Pause(int slot);
     double PPD();
     //string Protein(string options);
     //string QueueInfo();
@@ -110,8 +114,9 @@ public:
     //string SlotInfo();
     //string SlotModify(string options);
     //string SlotOptions(string options);
-    //string UnPause(string slot);
-    //string Uptime();
+    void UnPause();
+    void UnPause(int slot);
+    struct tm Uptime();
     //string WaitForUnits();
     double Add(double num1, double num2);
     //string Clear();

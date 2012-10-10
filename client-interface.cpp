@@ -36,9 +36,8 @@ int main()
         return 0;
     }
     cout << "Authentication successful" << endl;
-	cout << myfahclient->Help("clear");
+    cout << "Slot count: " << myfahclient->NumSlots() << endl;
 	cout << "PPD: " << myfahclient->PPD() << endl;
-	myfahclient->Quit();
 	cout << "Closed connection to Folding@home command server" << endl;
     delete myfahclient;      
     return 0;

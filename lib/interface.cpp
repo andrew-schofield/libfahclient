@@ -84,9 +84,47 @@ PYONValue* Interface::Info()
     return PYON::Parse(Preparse(this->connection->Command("info\n")).c_str());
 }
 
+PYONValue* Interface::NumSlots()
+{
+    return PYON::Parse(Preparse(this->connection->Command("num-slots\n")).c_str());
+}
+
+void Interface::Pause()
+{
+	this->connection->Command("pause\n");
+}
+
+void Interface::Pause(int slot)
+{
+	string str;
+	str.append("pause ");
+	str.append(stringify(slot));
+	str.append("\n");
+	this->connection->Command(str);
+}
+
 PYONValue* Interface::PPD()
 {
 	return PYON::Parse(Preparse(this->connection->Command("ppd\n")).c_str());
+}
+
+void Interface::UnPause()
+{
+	this->connection->Command("unpause\n");
+}
+
+void Interface::UnPause(int slot)
+{
+	string str;
+	str.append("unpause ");
+	str.append(stringify(slot));
+	str.append("\n");
+	this->connection->Command(str);
+}
+
+string Interface::Uptime()
+{
+	return this->connection->Command("uptime\n");
 }
 
 string Interface::Add(double num1, double num2)
