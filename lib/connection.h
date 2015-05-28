@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <sys/types.h>
+#ifdef WIN32
+#include <winsock2.h>
+#else
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#endif
 #include <string>
 #include <stdlib.h>
-#include <unistd.h>
+//#include <unistd.h>
 
 #define RECV_BYTES 4096
 

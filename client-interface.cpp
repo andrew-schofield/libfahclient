@@ -24,22 +24,24 @@ int main()
     string password = "1";
     int port = 36330;
 
-    FahClient *myfahclient = new FahClient(hostname, port);
+    FahClient *myfahclient = new FahClient(hostname.c_str(), port);
     cout << "Connected to Folding@home command server @ " << hostname << ":" << port << endl;
     cout << "Authenticating..." << endl;
     if (!myfahclient->Auth(password))
     {
-		cout << "Authentication failed!" << endl;
-		myfahclient->Quit();
-		cout << "Closed connection to Folding@home command server" << endl;
+        cout << "Authentication failed!" << endl;
+        myfahclient->Quit();
+        cout << "Closed connection to Folding@home command server" << endl;
         delete myfahclient;
+        getchar();
         return 0;
     }
     cout << "Authentication successful" << endl;
     cout << "Slot count: " << myfahclient->NumSlots() << endl;
-	cout << "PPD: " << myfahclient->PPD() << endl;
-	cout << "Closed connection to Folding@home command server" << endl;
-    delete myfahclient;      
+    cout << "PPD: " << myfahclient->PPD() << endl;
+    cout << "Closed connection to Folding@home command server" << endl;
+    delete myfahclient;  
+    getchar();
     return 0;
 }
 

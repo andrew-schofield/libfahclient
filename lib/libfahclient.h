@@ -71,7 +71,7 @@ struct info {
 class FahClient
 {
 private:
-    Interface *interface;
+    Interface* clientInterface;
 public:
 
     FahClient(string hostname, int port);
