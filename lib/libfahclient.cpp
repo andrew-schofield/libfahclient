@@ -175,11 +175,11 @@ struct info FahClient::Info()
         {
             if(WideToNarrow(subsection[j]->AsString()).compare("Version") == 0)
                 infoholder.build.Version = WideToNarrow(subsection[j+1]->AsString());
-            //if(WideToNarrow(subsection[j]->AsString()).compare("Date") == 0)
-            //    infoholder.build.Date = WideToNarrow(subsection[j+1]->AsString());
-            //if(WideToNarrow(subsection[j]->AsString()).compare("Time") == 0)
-            //    infoholder.build.Time = WideToNarrow(subsection[j+1]->AsString());
-            if(WideToNarrow(subsection[j]->AsString()).compare("SVNRev") == 0)
+            if(WideToNarrow(subsection[j]->AsString()).compare("Date") == 0)
+                infoholder.build.Date = WideToNarrow(subsection[j+1]->AsString());
+            if(WideToNarrow(subsection[j]->AsString()).compare("Time") == 0)
+                infoholder.build.Time = WideToNarrow(subsection[j+1]->AsString());
+            if(WideToNarrow(subsection[j]->AsString()).compare("SVN Rev") == 0)
                 infoholder.build.SVNRev = atoi(WideToNarrow(subsection[j+1]->AsString()).c_str());
             if(WideToNarrow(subsection[j]->AsString()).compare("Branch") == 0)
                 infoholder.build.Branch = WideToNarrow(subsection[j+1]->AsString());
@@ -203,7 +203,40 @@ struct info FahClient::Info()
         subsection = section[i]->AsArray();
         for (unsigned int j = 0; j < subsection.size(); j+=2)
         { 
-           // wcout << L"[" << j << L"] => " << subsection[j]->Stringify() << L"\r\n";
+            if (WideToNarrow(subsection[j]->AsString()).compare("OS") == 0)
+                infoholder.system.OS = WideToNarrow(subsection[j + 1]->AsString());
+            if (WideToNarrow(subsection[j]->AsString()).compare("CPU") == 0)
+                infoholder.system.CPU = WideToNarrow(subsection[j + 1]->AsString());
+            if (WideToNarrow(subsection[j]->AsString()).compare("CPU ID") == 0)
+                infoholder.system.CPUID = WideToNarrow(subsection[j + 1]->AsString());
+            if (WideToNarrow(subsection[j]->AsString()).compare("CPUs") == 0)
+                infoholder.system.CPUs =atoi(WideToNarrow(subsection[j + 1]->AsString()).c_str());
+            if (WideToNarrow(subsection[j]->AsString()).compare("Memory") == 0)
+                infoholder.system.Memory = WideToNarrow(subsection[j + 1]->AsString());
+            if (WideToNarrow(subsection[j]->AsString()).compare("Free Memory") == 0)
+                infoholder.system.FreeMemory = WideToNarrow(subsection[j + 1]->AsString());
+            if (WideToNarrow(subsection[j]->AsString()).compare("Threads") == 0)
+                infoholder.system.Threads = WideToNarrow(subsection[j + 1]->AsString());
+            if (WideToNarrow(subsection[j]->AsString()).compare("GPUs") == 0)
+                infoholder.system.GPUs = atoi(WideToNarrow(subsection[j + 1]->AsString()).c_str());
+            if (WideToNarrow(subsection[j]->AsString()).compare("On Battery") == 0)
+            {
+                bool b;
+                std::istringstream(WideToNarrow(subsection[j + 1]->AsString())) >> std::boolalpha >> b;
+                infoholder.system.OnBattery = b;
+            }
+            if (WideToNarrow(subsection[j]->AsString()).compare("Win32 Service") == 0)
+            {
+                bool b;
+                std::istringstream(WideToNarrow(subsection[j + 1]->AsString())) >> std::boolalpha >> b;
+                infoholder.system.Win32Service = b;
+            }
+            if (WideToNarrow(subsection[j]->AsString()).compare("CWD") == 0)
+                infoholder.system.CWD = WideToNarrow(subsection[j + 1]->AsString());
+            if (WideToNarrow(subsection[j]->AsString()).compare("PID") == 0)
+                infoholder.system.PID = atoi(WideToNarrow(subsection[j + 1]->AsString()).c_str());
+            if (WideToNarrow(subsection[j]->AsString()).compare("UTC Offset") == 0)
+                infoholder.system.UTCoffset = atoi(WideToNarrow(subsection[j + 1]->AsString()).c_str());
         }
     }
     return infoholder;

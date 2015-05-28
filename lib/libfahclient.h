@@ -36,8 +36,8 @@ struct info {
     } client;
     struct Build {
         std::string Version;
-        time_t Date;
-        time_t Time;
+        std::string Date;
+        std::string Time;
         int SVNRev;
         std::string Branch;
         std::string Compiler;
@@ -50,19 +50,23 @@ struct info {
         std::string OS;
         std::string CPU;
         std::string CPUID;
-        std::string CPUs;
+        unsigned int CPUs;
         std::string Memory;
         std::string FreeMemory;
         std::string Threads;
-        int GPUs;
+        unsigned int GPUs;
         /*array of GPUs should be here*/
-        double CUDA;
-        double CUDADriver;
+        std::string CUDA;
+        std::string CUDADriver;
+        bool HasBattery;
         bool OnBattery;
         double UTCoffset;
         int PID;
         std::string CWD;
         bool Win32Service;
+        double OSVersion;
+        std::string OSArch;
+
     } system;
 };
 
