@@ -13,14 +13,12 @@
 
 #define RECV_BYTES 4096
 
-using namespace std;
-
 class Connection
 {
 private:
     int socket_descriptor;
 public:
-    Connection(string hostname, int port);
+    Connection(std::string hostname, int port);
     
     ~Connection();
 
@@ -28,10 +26,10 @@ public:
 
     bool Socket_Send(const char *message);
 
-    string Socket_Recv();
+    std::string Socket_Recv();
 
     void Socket_Close();
     
-    string Command(string cmd);
+    std::string Command(std::string cmd);
 
 };

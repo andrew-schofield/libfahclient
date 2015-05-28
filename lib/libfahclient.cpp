@@ -18,10 +18,10 @@
 
 #include "libfahclient.h"
 
-string WideToNarrow(wstring wide)
+std::string WideToNarrow(std::wstring wide)
 {
     //gah, not unicode safe!!
-    string str;
+    std::string str;
     str.assign(wide.begin(), wide.end());
     return str;
 }
@@ -35,7 +35,7 @@ bool to_bool(std::string str)
     return b;
 }
 
-FahClient::FahClient(string hostname, int port)
+FahClient::FahClient(std::string hostname, int port)
 {
     clientInterface = new Interface(hostname, port);
 }
@@ -45,26 +45,26 @@ FahClient::~FahClient(void)
     delete clientInterface;
 }
 
-string FahClient::Help(string option)
+std::string FahClient::Help(std::string option)
 {
     return this->clientInterface->Help(option);
 }
 
-bool FahClient::Auth(string password)
+bool FahClient::Auth(std::string password)
 {
-    string str;
+    std::string str;
     str = this->clientInterface->Auth(password);
-    if(str.find("OK") != string::npos)
+    if (str.find("OK") != std::string::npos)
         return true;
-    if(str.find("FAILED") != string::npos)
+    if (str.find("FAILED") != std::string::npos)
         return false;
     return false;
 }
 
-string FahClient::Error(string message)
+std::string FahClient::Error(std::string message)
 {
     PYONValue* value = this->clientInterface->Error(message);
-    return WideToNarrow(wstring(value->AsString()));
+    return WideToNarrow(std::wstring(value->AsString()));
 }
 
 void FahClient::Exit()
@@ -224,7 +224,7 @@ double FahClient::Mul(double num1, double num2)
     return strtod(this->clientInterface->Mul(num1, num2).c_str(), NULL);
 }
 
-bool FahClient::Not(string expr)
+bool FahClient::Not(std::string expr)
 {
     return to_bool(this->clientInterface->Not(expr));
 }

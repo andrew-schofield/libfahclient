@@ -16,7 +16,7 @@
 
 #include "interface.h"
 
-Interface::Interface(string hostname, int port)
+Interface::Interface(std::string hostname, int port)
 {
     connection = new Connection(hostname, port);
 }
@@ -26,17 +26,17 @@ Interface::~Interface()
     delete connection;
 }
 
-string Interface::Preparse(string pyon)
+std::string Interface::Preparse(std::string pyon)
 {
     pyon.replace(pyon.find("PyON"), pyon.find("\n")+1, "");
     pyon.replace(pyon.find("\n---\n>"), 6, "");
     return pyon;
 }
 
-string Interface::Help(string option)
+std::string Interface::Help(std::string option)
 {
-    string str;
-    string ret;
+    std::string str;
+    std::string ret;
     str.append("help ");
     str.append(option);
     str.append("\n");
@@ -46,18 +46,18 @@ string Interface::Help(string option)
     
 }
 
-string Interface::Auth(string password)
+std::string Interface::Auth(std::string password)
 {
-    string str;
+    std::string str;
     str.append("auth ");
     str.append(password);
     str.append("\n");
     return this->connection->Command(str);
 }
 
-PYONValue* Interface::Error(string message)
+PYONValue* Interface::Error(std::string message)
 {
-    string str;
+    std::string str;
     str.append("error \"");
     str.append(message);
     str.append("\"\n");
@@ -96,7 +96,7 @@ void Interface::Pause()
 
 void Interface::Pause(int slot)
 {
-    string str;
+    std::string str;
     str.append("pause ");
     str.append(stringify(slot));
     str.append("\n");
@@ -115,21 +115,21 @@ void Interface::UnPause()
 
 void Interface::UnPause(int slot)
 {
-    string str;
+    std::string str;
     str.append("unpause ");
     str.append(stringify(slot));
     str.append("\n");
     this->connection->Command(str);
 }
 
-string Interface::Uptime()
+std::string Interface::Uptime()
 {
     return this->connection->Command("uptime\n");
 }
 
-string Interface::Add(double num1, double num2)
+std::string Interface::Add(double num1, double num2)
 {
-    string str;
+    std::string str;
     str.append("add ");
     str.append(stringify(num1));
     str.append(" ");
@@ -138,9 +138,9 @@ string Interface::Add(double num1, double num2)
     return this->connection->Command(str);
 }
 
-string Interface::Div(double num1, double num2)
+std::string Interface::Div(double num1, double num2)
 {
-    string str;
+    std::string str;
     str.append("div ");
     str.append(stringify(num1));
     str.append(" ");
@@ -149,9 +149,9 @@ string Interface::Div(double num1, double num2)
     return this->connection->Command(str);
 }
 
-string Interface::Mul(double num1, double num2)
+std::string Interface::Mul(double num1, double num2)
 {
-    string str;
+    std::string str;
     str.append("mul ");
     str.append(stringify(num1));
     str.append(" ");
@@ -160,18 +160,18 @@ string Interface::Mul(double num1, double num2)
     return this->connection->Command(str);
 }
 
-string Interface::Not(string expr)
+std::string Interface::Not(std::string expr)
 {
-    string str;
+    std::string str;
     str.append("not ");
     str.append(expr);
     str.append("\n");
     return this->connection->Command(str);
 }
 
-string Interface::Sub(double num1, double num2)
+std::string Interface::Sub(double num1, double num2)
 {
-    string str;
+    std::string str;
     str.append("sub ");
     str.append(stringify(num1));
     str.append(" ");

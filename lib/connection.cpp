@@ -22,14 +22,14 @@
 
 #include "connection.h"
 
-Connection::Connection(string hostname, int port)
+Connection::Connection(std::string hostname, int port)
 {
-	if (Socket_Connect(hostname.c_str(), port))
-		this->Socket_Recv();
-	else
-	{
-		std::cout << "Could not open connection" << endl;
-	}
+    if (Socket_Connect(hostname.c_str(), port))
+        this->Socket_Recv();
+    else
+    {
+        std::cout << "Could not open connection" << std::endl;
+    }
 }
 
 Connection::~Connection()
@@ -39,31 +39,31 @@ Connection::~Connection()
 bool Connection::Socket_Connect(const char *hostname, int port)
 {
 #ifdef WIN32
-	WSADATA wsaData;
-	WORD version;
-	int error;
+    WSADATA wsaData;
+    WORD version;
+    int error;
 
-	version = MAKEWORD(2, 0);
+    version = MAKEWORD(2, 0);
 
-	error = WSAStartup(version, &wsaData);
+    error = WSAStartup(version, &wsaData);
 
-	/* check for error */
-	if (error != 0)
-	{
-		/* error occured */
-		return FALSE;
-	}
+    /* check for error */
+    if (error != 0)
+    {
+        /* error occured */
+        return FALSE;
+    }
 
-	/* check for correct version */
-	if (LOBYTE(wsaData.wVersion) != 2 ||
-		HIBYTE(wsaData.wVersion) != 0)
-	{
-		/* incorrect WinSock version */
-		WSACleanup();
-		return FALSE;
-	}
+    /* check for correct version */
+    if (LOBYTE(wsaData.wVersion) != 2 ||
+        HIBYTE(wsaData.wVersion) != 0)
+    {
+        /* incorrect WinSock version */
+        WSACleanup();
+        return FALSE;
+    }
 
-	/* WinSock has been initialized */
+    /* WinSock has been initialized */
 #endif
 
     struct sockaddr_in sin;
@@ -102,7 +102,7 @@ bool Connection::Socket_Send(const char *message)
     return true;
 }
 
-string Connection::Socket_Recv()
+std::string Connection::Socket_Recv()
 {
     fd_set g_ReadSet;
     struct timeval tv;
@@ -110,7 +110,7 @@ string Connection::Socket_Recv()
     FD_SET(socket_descriptor, &g_ReadSet);
     tv.tv_sec = 0;
     tv.tv_usec = 500000;
-    string out = "";
+    std::string out = "";
     static char buffer[RECV_BYTES];
     int recv_bytes = 0;
     int retval = 1;
@@ -133,15 +133,15 @@ void Connection::Socket_Close()
 {
 #ifdef WIN32
     closesocket(socket_descriptor);
-	WSACleanup();
+    WSACleanup();
 #else
     close(socket_descriptor);
 #endif
 }
 
-string Connection::Command(string cmd)
+std::string Connection::Command(std::string cmd)
 {
-    string s;
+    std::string s;
     Socket_Send(cmd.c_str());
     s = this->Socket_Recv();
     return s;

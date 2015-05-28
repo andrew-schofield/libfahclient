@@ -20,26 +20,26 @@
 
 int main()
 {
-    string hostname = "127.0.0.1";
-    string password = "1";
+    std::string hostname = "127.0.0.1";
+    std::string password = "1";
     int port = 36330;
 
     FahClient *myfahclient = new FahClient(hostname.c_str(), port);
-    cout << "Connected to Folding@home command server @ " << hostname << ":" << port << endl;
-    cout << "Authenticating..." << endl;
+    std::cout << "Connected to Folding@home command server @ " << hostname << ":" << port << std::endl;
+    std::cout << "Authenticating..." << std::endl;
     if (!myfahclient->Auth(password))
     {
-        cout << "Authentication failed!" << endl;
+        std::cout << "Authentication failed!" << std::endl;
         myfahclient->Quit();
-        cout << "Closed connection to Folding@home command server" << endl;
+        std::cout << "Closed connection to Folding@home command server" << std::endl;
         delete myfahclient;
         getchar();
         return 0;
     }
-    cout << "Authentication successful" << endl;
-    cout << "Slot count: " << myfahclient->NumSlots() << endl;
-    cout << "PPD: " << myfahclient->PPD() << endl;
-    cout << "Closed connection to Folding@home command server" << endl;
+    std::cout << "Authentication successful" << std::endl;
+    std::cout << "Slot count: " << myfahclient->NumSlots() << std::endl;
+    std::cout << "PPD: " << myfahclient->PPD() << std::endl;
+    std::cout << "Closed connection to Folding@home command server" << std::endl;
     delete myfahclient;  
     getchar();
     return 0;

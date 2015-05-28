@@ -26,36 +26,34 @@
 #include "PYONValue.h"
 #include "interface.h"
 
-using namespace std;
-
 struct info {
     struct Client {
-        string Website;
-        string Copyright;
-        string Author;
-        string Args;
-        string Config;        
+        std::string Website;
+        std::string Copyright;
+        std::string Author;
+        std::string Args;
+        std::string Config;
     } client;
     struct Build {
-        string Version;
+        std::string Version;
         time_t Date;
         time_t Time;
         int SVNRev;
-        string Branch;
-        string Compiler;
-        string Options;
-        string Platform;
+        std::string Branch;
+        std::string Compiler;
+        std::string Options;
+        std::string Platform;
         int Bits;
-        string Mode;        
+        std::string Mode;
     } build;
     struct System {
-        string OS;
-        string CPU;
-        string CPUID;
-        string CPUs;
-        string Memory;
-        string FreeMemory;
-        string Threads;
+        std::string OS;
+        std::string CPU;
+        std::string CPUID;
+        std::string CPUs;
+        std::string Memory;
+        std::string FreeMemory;
+        std::string Threads;
         int GPUs;
         /*array of GPUs should be here*/
         double CUDA;
@@ -63,7 +61,7 @@ struct info {
         bool OnBattery;
         double UTCoffset;
         int PID;
-        string CWD;
+        std::string CWD;
         bool Win32Service;
     } system;
 };
@@ -74,59 +72,59 @@ private:
     Interface* clientInterface;
 public:
 
-    FahClient(string hostname, int port);
+    FahClient(std::string hostname, int port);
     ~FahClient(void);
-    string error;
+    std::string error;
 
 //Basic Commands
-    string Help(string option = "");
-    bool Auth(string option = "");
-    string Error(string message = "");
+    std::string Help(std::string option = "");
+    bool Auth(std::string option = "");
+    std::string Error(std::string message = "");
     void Exit();
     int Heartbeat();
-    //void LogUpdates(string state);
+    //void LogUpdates(std::string state);
     void Quit();
-    //string Updates(string options);
+    //std::string Updates(std::string options);
 //Folding@home client commands
-    //string Bond(string options);
-    //string DoCycle();
-    //string DownloadCore(string options);
-    //string Finish(string slot);
-    //string GetInfo();
+    //std::string Bond(std::string options);
+    //std::string DoCycle();
+    //std::string DownloadCore(std::string options);
+    //std::string Finish(std::string slot);
+    //std::string GetInfo();
     struct info Info();
-    //string Inject(string options);
-    //string MaskUnitState();
+    //std::string Inject(std::string options);
+    //std::string MaskUnitState();
     int NumSlots();
-    //string Option();
-    //string Options();
+    //std::string Option();
+    //std::string Options();
     void Pause();
     void Pause(int slot);
     double PPD();
-    //string Protein(string options);
-    //string QueueInfo();
-    //string RequestId();
-    //string RequestWs();
-    //string Save(string file);
-    //string Shutdown();
-    //string SimulationInfo(string slot);
-    //string SlotAdd(string options);
-    //string SlotDelete(string slot);
-    //string SlotInfo();
-    //string SlotModify(string options);
-    //string SlotOptions(string options);
+    //std::string Protein(std::string options);
+    //std::string QueueInfo();
+    //std::string RequestId();
+    //std::string RequestWs();
+    //std::string Save(std::string file);
+    //std::string Shutdown();
+    //std::string SimulationInfo(std::string slot);
+    //std::string SlotAdd(std::string options);
+    //std::string SlotDelete(std::string slot);
+    //std::string SlotInfo();
+    //std::string SlotModify(std::string options);
+    //std::string SlotOptions(std::string options);
     void UnPause();
     void UnPause(int slot);
     struct tm Uptime();
-    //string WaitForUnits();
+    //std::string WaitForUnits();
     double Add(double num1, double num2);
-    //string Clear();
-    //string Date(string format);
+    //std::string Clear();
+    //std::string Date(std::string format);
     double Div (double num1, double num2);
-    //string Eval(string expr);
-    //string If(string options);
+    //std::string Eval(std::string expr);
+    //std::string If(std::string options);
     double Mul(double num1, double num2);
-    bool Not(string expr);
-    //string Sleep(int seconds);
+    bool Not(std::string expr);
+    //std::string Sleep(int seconds);
     double Sub(double num1, double num2);
 };
 

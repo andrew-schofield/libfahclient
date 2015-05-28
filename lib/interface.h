@@ -26,8 +26,6 @@
 #include "connection.h"
 #include "PYONValue.h"
 
-using namespace std;
-
 class BadConversion : public std::runtime_error
 {
 public:
@@ -39,7 +37,7 @@ public:
 class Interface
 {
 private:
-    string Preparse(string pyon);
+    std::string Preparse(std::string pyon);
     std::string stringify(double x)
     {
         std::ostringstream o;
@@ -50,55 +48,55 @@ private:
 protected:
     Connection *connection;
 public:
-    Interface(string hostname, int port);
+    Interface(std::string hostname, int port);
     ~Interface(void);
 //Basic Commands
-    string Help(string option);
-    string Auth(string option);
-    PYONValue* Error(string message);
+    std::string Help(std::string option);
+    std::string Auth(std::string option);
+    PYONValue* Error(std::string message);
     void Exit();
     PYONValue* Heartbeat();
     void Quit();
-    //string Updates(string options);
+    //std::string Updates(std::string options);
 //Folding@home client commands
-    //string Bond(string options);
-    //string DoCycle();
-    //string DownloadCore(string options);
-    //string Finish(string slot);
-    //string GetInfo();
+    //std::string Bond(std::string options);
+    //std::string DoCycle();
+    //std::string DownloadCore(std::string options);
+    //std::string Finish(std::string slot);
+    //std::string GetInfo();
     PYONValue* Info();
-    //string MaskUnitState();
+    //std::string MaskUnitState();
     PYONValue* NumSlots();
-    //string Option();
-    //string Options();
+    //std::string Option();
+    //std::string Options();
     void Pause();
     void Pause(int slot);
     PYONValue* PPD();
-    //string Protein(string options);
-    //string QueueInfo();
-    //string RequestId();
-    //string RequestWs();
-    //string Save(string file);
-    //string Shutdown();
-    //string SimulationInfo(string slot);
-    //string SlotAdd(string options);
-    //string SlotDelete(string slot);
-    //string SlotInfo();
-    //string SlotModify(string options);
-    //string SlotOptions(string options);
-    string Uptime();
+    //std::string Protein(std::string options);
+    //std::string QueueInfo();
+    //std::string RequestId();
+    //std::string RequestWs();
+    //std::string Save(std::string file);
+    //std::string Shutdown();
+    //std::string SimulationInfo(std::string slot);
+    //std::string SlotAdd(std::string options);
+    //std::string SlotDelete(std::string slot);
+    //std::string SlotInfo();
+    //std::string SlotModify(std::string options);
+    //std::string SlotOptions(std::string options);
+    std::string Uptime();
     void UnPause();
     void UnPause(int slot);
-    //string WaitForUnits();
-    string Add(double num1, double num2);
-    //string Date(string format);
-    string Div (double num1, double num2);
-    //string Eval(string expr);
-    //string If(string options);
-    string Mul(double num1, double num2);
-    string Not(string expr);
+    //std::string WaitForUnits();
+    std::string Add(double num1, double num2);
+    //std::string Date(std::string format);
+    std::string Div(double num1, double num2);
+    //std::string Eval(std::string expr);
+    //std::string If(std::string options);
+    std::string Mul(double num1, double num2);
+    std::string Not(std::string expr);
     //void Sleep(int seconds);
-    string Sub(double num1, double num2);
+    std::string Sub(double num1, double num2);
 };
 
 #endif /* _INTERFACE_H */
